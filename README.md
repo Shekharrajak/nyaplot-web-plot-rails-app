@@ -9,6 +9,8 @@ Things you may want to cover:
 
 * System dependencies
 
+`bundle install`
+
 * Configuration
 
 * Database creation
@@ -21,4 +23,5 @@ Things you may want to cover:
 
 * Deployment instructions
 
+`rails s`
 * ...
