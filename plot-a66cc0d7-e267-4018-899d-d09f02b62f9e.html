@@ -1,0 +1,61 @@
+<html lang='en'>
+<head>
+  <title>Nyaplot</title>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script>if(window['d3'] === undefined ||
+   window['Nyaplot'] === undefined){
+    var path = {"d3":"https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min","downloadable":"http://cdn.rawgit.com/domitry/d3-downloadable/master/d3-downloadable"};
+
+
+
+    var shim = {"d3":{"exports":"d3"},"downloadable":{"exports":"downloadable"}};
+
+    require.config({paths: path, shim:shim});
+
+
+require(['d3'], function(d3){window['d3']=d3;console.log('finished loading d3');require(['downloadable'], function(downloadable){window['downloadable']=downloadable;console.log('finished loading downloadable');
+
+	var script = d3.select("head")
+	    .append("script")
+	    .attr("src", "http://cdn.rawgit.com/domitry/Nyaplotjs/master/release/nyaplot.js")
+	    .attr("async", true);
+
+	script[0][0].onload = script[0][0].onreadystatechange = function(){
+
+
+	    var event = document.createEvent("HTMLEvents");
+	    event.initEvent("load_nyaplot",false,false);
+	    window.dispatchEvent(event);
+	    console.log('Finished loading Nyaplotjs');
+
+	};
+
+
+});});
+}
+</script>
+</head>
+<body><div id='vis-4af05555-77d5-48a1-a25d-a48154191558'></div>
+<script>
+(function(){
+    var render = function(){
+        var model = {"panes":[{"properties":{"diagrams":[{"properties":{"type":"bar","options":{"x":"data0","y":"data1"},"data":"ccc86158-4a1a-488b-9456-878ae1aaa9d2"},"xrange":["Persian","Maine Coon","American Shorthair"],"yrange":[0,30]}],"options":{"x_label":"Species","y_label":"Number"}}}],"data":{"ccc86158-4a1a-488b-9456-878ae1aaa9d2":{"name":"ccc86158-4a1a-488b-9456-878ae1aaa9d2","rows":[{"data0":"Persian","data1":10},{"data0":"Maine Coon","data1":20},{"data0":"American Shorthair","data1":30}]}},"extension":[]}
+        var id_name = '#vis-4af05555-77d5-48a1-a25d-a48154191558';
+        Nyaplot.core.parse(model, id_name);
+
+        require(['downloadable'], function(downloadable){
+          var svg = d3.select(id_name).select("svg");
+	  if(!svg.empty())
+	    svg.call(downloadable().filename('fig'));
+	});
+    };
+    if(window['Nyaplot']==undefined){
+        window.addEventListener('load_nyaplot', render, false);
+	return;
+    } else {
+       render();
+    }
+})();
+</script>
+</body>
+</html>
